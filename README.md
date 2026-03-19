@@ -7,124 +7,89 @@ A simple command-line tool for performing web searches using the Brave Search AP
 - Fast web searches directly from your terminal
 - Clean, text-based output (10 results per search)
 - Minimal dependencies (only `commander`)
-- Easy to install and use
+- Works with `npx` - no global install needed
 
 ## Prerequisites
 
 - Node.js 20 or higher
-- pnpm package manager
 - Brave Search API key ([Get one here](https://api.search.brave.com/app/keys))
 
 ## Installation
 
-1. Clone or navigate to the project directory:
 ```bash
-cd ~/dev/brave-search-cli
+npm install -g bsearch-cli
 ```
 
-2. Install dependencies:
+Or use directly with npx (no installation required):
+
 ```bash
-pnpm install
+npx bsearch-cli "your search query"
 ```
 
-3. Set up your Brave Search API key as an environment variable:
+## Setup
+
+Set your Brave Search API key as an environment variable:
+
 ```bash
 export BRAVE_API_KEY="your-api-key-here"
 ```
 
-For convenience, add this to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.):
-```bash
-echo 'export BRAVE_API_KEY="your-api-key-here"' >> ~/.bashrc
-source ~/.bashrc
-```
+Add to your shell profile (`~/.zshrc` or `~/.bashrc`) for persistence:
 
-4. Link the CLI globally:
 ```bash
-pnpm link --global
+echo 'export BRAVE_API_KEY="your-api-key-here"' >> ~/.zshrc
 ```
 
 ## Usage
 
-### Basic Search
-
 ```bash
-bsearch <search-query>
-```
+# Basic search
+bsearch "hello world"
 
-### Examples
+# Korean and special characters supported
+bsearch "대한민국 날씨"
 
-Search for web development topics:
-```bash
-bsearch JavaScript async await
-```
+# Show help
+bsearch
 
-Search with quotes for exact phrases:
-```bash
-bsearch "climate change solutions"
-```
-
-Search for technical documentation:
-```bash
-bsearch Node.js streams API
+# Show version
+bsearch --version
 ```
 
 ## Output Format
 
-Results are displayed as a simple list with:
-- **Title**: The webpage title
-- **URL**: Direct link to the webpage
-- **Description**: Brief summary of the page content
-
-Example output:
 ```
-Searching for: "Node.js documentation"
+Found 10 results for "hello world":
 
-1. Node.js Documentation
-   https://nodejs.org/docs
-   Official Node.js documentation with API references, guides, and examples.
+1. "Hello, World!" program - Wikipedia
+   https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
+   A "Hello, World!" program is usually a simple computer program...
 
-2. Node.js Tutorial - W3Schools
-   https://www.w3schools.com/nodejs/
-   Learn Node.js from basics to advanced concepts with interactive examples.
-
+2. Hello World
+   https://code.org/helloworld
+   Hello World is a great starting point...
 ...
 ```
 
-## API Key
+## Error Handling
 
-You need a valid Brave Search API key to use this tool. Visit [Brave Search API](https://api.search.brave.com/app/keys) to:
-1. Sign up for a free account
-2. Generate your API key
-3. Copy the key and set it as the `BRAVE_API_KEY` environment variable
+- **Missing API key**: Exits with code 1
+- **API errors (401, 429, etc.)**: Outputs error message to stderr, exits with code 1
+- **No results**: Displays "No search results found"
 
 ## Troubleshooting
 
-**"API key not found" error**
-- Make sure you've set the `BRAVE_API_KEY` environment variable
+**"API key not found"**
+- Make sure `BRAVE_API_KEY` environment variable is set
 - Check that the key is correctly exported in your current shell session
 
 **"No results found"**
 - Try a different search query
 - Check your internet connection
 
-**Command not found**
-- Make sure you've run `pnpm link --global`
-- Check that `~/.npm-global/bin` is in your PATH
-
-## Development
-
-Project structure:
-```
-brave-search-cli/
-├── index.js       # Main CLI application
-├── package.json   # Project configuration
-├── README.md      # This file
-└── .git/          # Git repository
-```
-
 ## License
 
-MIT License - feel free to use and modify as needed.
+MIT
 
 ## Version
 

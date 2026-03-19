@@ -5,9 +5,10 @@ A simple command-line tool for performing web searches using the Brave Search AP
 ## Features
 
 - Fast web searches directly from your terminal
-- Clean, text-based output (10 results per search)
+- Clean, text-based output (5 results per search)
 - Minimal dependencies (only `commander`)
 - Works with `npx` - no global install needed
+- Korean and special characters supported
 
 ## Prerequisites
 
@@ -15,19 +16,16 @@ A simple command-line tool for performing web searches using the Brave Search AP
 - Brave Search API key ([Get one here](https://api.search.brave.com/app/keys))
 
 ## Installation
-
 ```bash
-npm install -g bsearch-cli
+npm install -g brave-search-cli
 ```
 
 Or use directly with npx (no installation required):
-
 ```bash
-npx bsearch-cli "your search query"
+npx brave-search-cli "your search query"
 ```
 
 ## Setup
-
 Set your Brave Search API key as an environment variable:
 
 ```bash
@@ -41,13 +39,12 @@ echo 'export BRAVE_API_KEY="your-api-key-here"' >> ~/.zshrc
 ```
 
 ## Usage
-
 ```bash
 # Basic search
-bsearch "hello world"
+npx brave-search-cli "hello world"
 
 # Korean and special characters supported
-bsearch "대한민국 날씨"
+npx brave-search-cli "대한민국 날씨"
 
 # Show help
 bsearch
@@ -57,9 +54,8 @@ bsearch --version
 ```
 
 ## Output Format
-
 ```
-Found 10 results for "hello world":
+Found 5 results for "hello world":
 
 1. "Hello, World!" program - Wikipedia
    https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
@@ -70,15 +66,12 @@ Found 10 results for "hello world":
    Hello World is a great starting point...
 ...
 ```
-
 ## Error Handling
-
 - **Missing API key**: Exits with code 1
 - **API errors (401, 429, etc.)**: Outputs error message to stderr, exits with code 1
 - **No results**: Displays "No search results found"
 
 ## Troubleshooting
-
 **"API key not found"**
 - Make sure `BRAVE_API_KEY` environment variable is set
 - Check that the key is correctly exported in your current shell session
@@ -88,9 +81,7 @@ Found 10 results for "hello world":
 - Check your internet connection
 
 ## License
-
 MIT
 
 ## Version
-
 0.1.0

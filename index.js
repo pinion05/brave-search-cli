@@ -49,7 +49,7 @@ async function performSearch(query) {
   // special characters, spaces, and other non-ASCII characters
   const apiUrl = new URL('https://api.search.brave.com/res/v1/web/search');
   apiUrl.searchParams.append('q', query);
-  apiUrl.searchParams.append('count', '10');
+  apiUrl.searchParams.append('count', '5');
 
   // Make API request
   let response;

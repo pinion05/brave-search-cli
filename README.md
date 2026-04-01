@@ -39,6 +39,8 @@ echo 'export BRAVE_API_KEY="your-api-key-here"' >> ~/.zshrc
 ```
 
 ## Usage
+
+### Using npx
 ```bash
 # Basic search
 npx brave-search-cli "hello world"
@@ -47,10 +49,28 @@ npx brave-search-cli "hello world"
 npx brave-search-cli "대한민국 날씨"
 
 # Show help
-bsearch
+npx brave-search-cli --help
+
+# Show version
+npx brave-search-cli --version
+```
+
+### After global install
+```bash
+# Basic search
+bsearch "hello world"
+
+# Korean and special characters supported
+bsearch "대한민국 날씨"
+
+# Show help
+bsearch --help
 
 # Show version
 bsearch --version
+
+# Running without arguments also shows help
+bsearch
 ```
 
 ## Output Format
@@ -84,4 +104,4 @@ Found 5 results for "hello world":
 MIT
 
 ## Version
-0.1.0
+0.2.1

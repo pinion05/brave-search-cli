@@ -7,7 +7,7 @@ const program = new Command();
 program
   .name('bsearch')
   .description('CLI tool for performing web searches using Brave Search API')
-  .version('0.1.0');
+  .version('0.2.1');
 
 program
   .argument('<query>', 'search query string')
